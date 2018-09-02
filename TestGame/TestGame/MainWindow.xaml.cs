@@ -23,6 +23,17 @@ namespace TestGame
         public MainWindow()
         {
             InitializeComponent();
+
+            int RectangleHeight = 25;
+
+            Rectangle MainRect = new Rectangle();
+            MainRect.Name = "MainRect";
+            MainRect.Height = RectangleHeight;
+            MainRect.Width = MainRect.Height;
+            MainRect.Fill = new SolidColorBrush(Color.FromArgb(255, (byte)0, (byte)10, (byte)200));
+            MainCanvas.Children.Add(MainRect);
+            Canvas.SetLeft(MainRect, 10);
+            Canvas.SetTop(MainRect, 10);
         }
     }
 }
