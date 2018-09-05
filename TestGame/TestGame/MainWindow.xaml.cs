@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestGame.Structures;
+using TestGame.Objects;
 
 namespace TestGame
 {
@@ -24,16 +26,12 @@ namespace TestGame
         {
             InitializeComponent();
 
-            int RectangleHeight = 25;
+            GOSquare Square1 = new GOSquare(45, new Coords(40, 80), "Vasya");
+            Rectangle Sq1Rct = Square1.SquareRect;
 
-            Rectangle MainRect = new Rectangle();
-            MainRect.Name = "MainRect";
-            MainRect.Height = RectangleHeight;
-            MainRect.Width = MainRect.Height;
-            MainRect.Fill = new SolidColorBrush(Color.FromArgb(255, (byte)0, (byte)10, (byte)200));
-            MainCanvas.Children.Add(MainRect);
-            Canvas.SetLeft(MainRect, 10);
-            Canvas.SetTop(MainRect, 10);
+            MainCanvas.Children.Add(Sq1Rct);
+            Canvas.SetLeft(Sq1Rct, Square1.crd.x);
+            Canvas.SetBottom(Sq1Rct, Square1.crd.y);
         }
     }
 }

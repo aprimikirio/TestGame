@@ -9,9 +9,19 @@ namespace TestGame.Objects
 {
     abstract class GameObject
     {
-        public int height;
-        public int width;
-        public string name;
+        public double height;
+        public double width;
         public Coords crd;
+        public string name;
+
+        public GameObject(double _height, double _width, Coords _crd, string _name)
+        {
+            height = _height;
+            width = _width;            
+            crd = _crd;
+            name = _name;
+        }
+
+
     }
 }

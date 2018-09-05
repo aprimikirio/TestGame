@@ -8,7 +8,13 @@ namespace TestGame.Structures
 {
     struct Coords
     {
-        public int x;
-        public int y;
+        public double x;
+        public double y;
+
+        public Coords(double _x, double _y)
+        {
+            x = _x;
+            y = _y;
+        }
     }
 }
