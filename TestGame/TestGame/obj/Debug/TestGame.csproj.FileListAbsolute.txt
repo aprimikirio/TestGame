@@ -13,3 +13,4 @@ D:\Documents\RT Games\TestGame\TestGame\obj\Debug\TestGame.csproj.GenerateResour
 D:\Documents\RT Games\TestGame\TestGame\obj\Debug\TestGame.csproj.CoreCompileInputs.cache
 D:\Documents\RT Games\TestGame\TestGame\obj\Debug\TestGame.exe
 D:\Documents\RT Games\TestGame\TestGame\obj\Debug\TestGame.pdb
+D:\Documents\RT Games\TestGame\TestGame\obj\Debug\App.baml
