@@ -26,12 +26,11 @@ namespace TestGame
         {
             InitializeComponent();
 
-            GOSquare Square1 = new GOSquare(45, new Coords(40, 80), "Vasya");
-            Rectangle Sq1Rct = Square1.SquareRect;
 
-            MainCanvas.Children.Add(Sq1Rct);
-            Canvas.SetLeft(Sq1Rct, Square1.crd.x);
-            Canvas.SetBottom(Sq1Rct, Square1.crd.y);
+
+            GOSquare Square1 = new GOSquare(45, new Coords(40, 80), "Vasya", MainCanvas, new ClrRGB(1488, 1488, 1488));
+
+            
         }
     }
 }

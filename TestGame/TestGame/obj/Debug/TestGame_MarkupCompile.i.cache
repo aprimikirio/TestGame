@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Documents\RT Games\TestGame\TestGame\obj\Debug\
+D:\Documents\RT Games\TestGame\TestGame\TestGame\TestGame\TestGame\obj\Debug\
 TestGame
 none
 false
 DEBUG;TRACE
+D:\Documents\RT Games\TestGame\TestGame\TestGame\TestGame\TestGame\App.xaml
+11151548125
 
-21519610241
-
-13962605935
+131122368948
 131569487696
-App.xaml;MainWindow.xaml;
+MainWindow.xaml;
 
-False
+True
 

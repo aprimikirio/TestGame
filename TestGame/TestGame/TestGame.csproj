@@ -50,12 +50,12 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="App.xaml">
+    <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Compile Include="GameStart.cs" />
+    </ApplicationDefinition>
     <Compile Include="Objects\GOSquare.cs" />
+    <Compile Include="Structures\ClrRGB.cs" />
     <Compile Include="Structures\Coords.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
