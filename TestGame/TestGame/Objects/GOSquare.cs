@@ -29,10 +29,14 @@ namespace TestGame.Objects
             SquareRect.Width = edge;
             SquareRect.Fill = _color.color;
 
-            Rectangle Sq1Rct = this.SquareRect;
-            mCanvas.Children.Add(Sq1Rct);
-            Canvas.SetLeft(Sq1Rct, this.crd.x);
-            Canvas.SetBottom(Sq1Rct, this.crd.y);
+            mCanvas.Children.Add(SquareRect);
+            Refresh();
+        }
+
+        public void Refresh()
+        {
+            Canvas.SetLeft(this.SquareRect, this.crd.x);
+            Canvas.SetBottom(this.SquareRect, this.crd.y);
 
         }
 
@@ -41,6 +45,7 @@ namespace TestGame.Objects
             get { return height; }
             set { this.height = value; this.width = value; }
         }
+
         public double Width
         {
             get { return width; }

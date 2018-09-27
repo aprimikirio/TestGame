@@ -22,15 +22,23 @@ namespace TestGame
     /// </summary>
     public partial class MainWindow : Window
     {
+        GOSquare Square1;
+
         public MainWindow()
         {
             InitializeComponent();
 
-
-
-            GOSquare Square1 = new GOSquare(45, new Coords(40, 80), "Vasya", MainCanvas, new ClrRGB(1488, 1488, 1488));
-
+            Square1 = new GOSquare(45, new Coords(40, 80), "Vasya", MainCanvas, new ClrRGB(1488, 1488, 1488));
             
+        }
+
+        private void MainCanvas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key.ToString() == "Left")
+                Square1.Movement("Left");
+            else if (e.Key.ToString() == "Right")
+                Square1.Movement("Right");
+            Square1.Refresh();
         }
     }
 }

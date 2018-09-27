@@ -22,6 +22,13 @@ namespace TestGame.Objects
             name = _name;
         }
 
+        public void Movement(string direction)
+        {
+            if (direction == "Left")
+                crd.x -= 1;
+            else if (direction == "Right")
+                crd.x += 1;
+        }
 
     }
 }
