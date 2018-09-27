@@ -24,7 +24,7 @@ namespace TestGame.Objects
             mCanvas = _mCanvas;
 
             SquareRect = new Rectangle();
-            SquareRect.Name = _name;
+            SquareRect.Name = _name.Replace(" ", string.Empty);
             SquareRect.Height = edge;
             SquareRect.Width = edge;
             SquareRect.Fill = _color.color;
