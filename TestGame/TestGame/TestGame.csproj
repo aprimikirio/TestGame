@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Game.cs" />
     <Compile Include="Objects\GOSquare.cs" />
     <Compile Include="Structures\ClrRGB.cs" />
     <Compile Include="Structures\Coords.cs" />

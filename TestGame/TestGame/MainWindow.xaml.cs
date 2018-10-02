@@ -22,17 +22,15 @@ namespace TestGame
     /// </summary>
     public partial class MainWindow : Window
     {
-        GOSquare Square1;
-        GOSquare Square5;
-
-        int angle = 0;
+        //GOSquare Square1;
+        //GOSquare Square5;
+        Game InitGame;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            Square1 = new GOSquare(45, new Coords(40, 80), "Vasya", MainCanvas, new ClrRGB(1488, 1488, 1488));
-            Square5 = new GOSquare(105, new Coords(120, 160), "Vam Povistka", MainCanvas, new ClrRGB(1337, 228, 1488));
+            InitGame = new Game(MainCanvas);
 
         }
 
@@ -40,12 +38,19 @@ namespace TestGame
         {
             if (e.Key.ToString() == "Left")
             {
-                //Square1.Movement("Left");
+                InitGame.Move("Left");
             }
             else if (e.Key.ToString() == "Right")
             {
-                //Square1.Movement("Right");
-                Square1.Rotate();
+                InitGame.Move("Right");                
+            }
+            else if (e.Key.ToString() == "Up")
+            {
+                InitGame.AddObject();
+            }
+            else if (e.Key.ToString() == "Down")
+            {
+                InitGame.AddObject(0, 0, 100);
             }
         }
     }

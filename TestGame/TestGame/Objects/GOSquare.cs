@@ -57,7 +57,26 @@ namespace TestGame.Objects
             rotateTransformSquare.CenterY = width;
             SquareRect.RenderTransform = rotateTransformSquare;
 
-            angle++;
+            angle += 5;
+        }
+
+        public bool IsIn(Coords InCrd)
+        {
+            double inX = InCrd.x;
+            double inY = InCrd.y;
+            Coords RT, LB;
+
+            RT.x = this.width + this.crd.x;
+            RT.y = this.height + this.crd.y;
+
+            LB.x = this.crd.x;
+            LB.y = this.crd.y;
+
+            if ((InCrd.x >= LB.x) && (InCrd.x <= RT.x)
+                && (InCrd.y >= LB.y) && (InCrd.x <= RT.y))
+                return true;
+            else
+                return false;
         }
 
         public double Height
