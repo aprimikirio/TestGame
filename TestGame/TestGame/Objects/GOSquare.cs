@@ -12,7 +12,7 @@ namespace TestGame.Objects
 {
     class GOSquare : GameObject
     {
-        private Rectangle SquareRect = new Rectangle();
+        public Rectangle SquareRect = new Rectangle();
         private Canvas mCanvas;
         private int angle = 0;
         public Coords LB, RB, RT, LT;
@@ -60,12 +60,12 @@ namespace TestGame.Objects
 
             if (angle > 90)
             {
-                rotateTransformSquare = new RotateTransform(angle-90);
+                rotateTransformSquare = new RotateTransform(angle - 90);
                 crd.x = crd.x + height; angle = 0; Refresh();
             }
             else
             {
-                rotateTransformSquare = new RotateTransform(angle);                
+                rotateTransformSquare = new RotateTransform(angle);
             }
 
             rotateTransformSquare.CenterX = height;
@@ -74,16 +74,6 @@ namespace TestGame.Objects
 
             angle += 5;
         }
-
-        public bool IsIn(GOSquare InSquare)
-        {
-            if ((InSquare.LB.x >= LB.x) && (InSquare.RT.x <= RT.x)
-                && (InSquare.LB.y >= LB.y) && (InSquare.RT.x <= RT.y))
-                return true;
-            else
-                return false;
-        }
-        
 
         public double Height
         {

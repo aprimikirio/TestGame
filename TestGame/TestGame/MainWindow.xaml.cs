@@ -25,12 +25,15 @@ namespace TestGame
         //GOSquare Square1;
         //GOSquare Square5;
         Game InitGame;
+        int incr;
+        
 
         public MainWindow()
         {
             InitializeComponent();
 
-            InitGame = new Game(MainCanvas);
+            InitGame = new Game(MainCanvas, txtbx);
+            incr = 0;
 
         }
 
@@ -46,8 +49,23 @@ namespace TestGame
             }
             else if (e.Key.ToString() == "Up")
             {
-                InitGame.AddObject(90, 60, 90);
-                InitGame.AddObject(100, 120, 50);
+                switch (incr)
+                {
+                    case 0:
+                        InitGame.AddObject(150, 150, 10);
+                        incr++; break;
+                    case 1:
+                        InitGame.AddObject(25, 25, 50);
+                        incr++; break;
+                    case 2:
+                        InitGame.AddObject(110, 0, 40);
+                        incr++; break;
+                    default:
+                        InitGame.AddObject();
+                        incr++; break;
+                }
+                
+                //InitGame.AddObject();
             }
         }
     }
