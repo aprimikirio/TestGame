@@ -15,21 +15,36 @@ namespace TestGame.Objects
         private Rectangle SquareRect = new Rectangle();
         private Canvas mCanvas;
         private int angle = 0;
+        public Coords LB, RB, RT, LT;
 
         public GOSquare(double edge, Coords _crd, string _name, Canvas _mCanvas, ClrRGB _color) : base(edge, edge, _crd, _name)
         {
             height = edge;
             width = edge;
             crd = _crd;
+            LB = _crd;
             name = _name;
-            mCanvas = _mCanvas;            
+            mCanvas = _mCanvas;
+
+            RB.x = LB.x + width;
+            RB.y = LB.y;
+
+            RT.x = LB.x + width;
+            RT.y = LB.y + height;
+
+            LT.x = LB.x;
+            LT.y = LB.y + height;
+
 
             SquareRect = new Rectangle();
             SquareRect.Name = _name.Replace(" ", string.Empty);
             SquareRect.Height = edge;
             SquareRect.Width = edge;
             SquareRect.Fill = _color.color;
+        }
 
+        public void AddToCanv()
+        {
             mCanvas.Children.Add(SquareRect);
             Refresh();
         }
@@ -60,24 +75,15 @@ namespace TestGame.Objects
             angle += 5;
         }
 
-        public bool IsIn(Coords InCrd)
+        public bool IsIn(GOSquare InSquare)
         {
-            double inX = InCrd.x;
-            double inY = InCrd.y;
-            Coords RT, LB;
-
-            RT.x = this.width + this.crd.x;
-            RT.y = this.height + this.crd.y;
-
-            LB.x = this.crd.x;
-            LB.y = this.crd.y;
-
-            if ((InCrd.x >= LB.x) && (InCrd.x <= RT.x)
-                && (InCrd.y >= LB.y) && (InCrd.x <= RT.y))
+            if ((InSquare.LB.x >= LB.x) && (InSquare.RT.x <= RT.x)
+                && (InSquare.LB.y >= LB.y) && (InSquare.RT.x <= RT.y))
                 return true;
             else
                 return false;
         }
+        
 
         public double Height
         {

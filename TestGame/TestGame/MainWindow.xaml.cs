@@ -46,11 +46,8 @@ namespace TestGame
             }
             else if (e.Key.ToString() == "Up")
             {
-                InitGame.AddObject();
-            }
-            else if (e.Key.ToString() == "Down")
-            {
-                InitGame.AddObject(0, 0, 100);
+                InitGame.AddObject(90, 60, 90);
+                InitGame.AddObject(100, 120, 50);
             }
         }
     }

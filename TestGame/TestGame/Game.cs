@@ -31,11 +31,6 @@ namespace TestGame
         
         public void AddObject()
         {
-            GOSquare Vasya = new GOSquare(rand.Next(10, 100), 
-                new Coords(rand.Next(0, 640), rand.Next(0, 480)), 
-                "Vasya", mCanvas, 
-                new ClrRGB(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255)));
-            GameObjects.Add(Vasya);
         }
 
         public void AddObject(double x, double y, double edg)
@@ -44,18 +39,13 @@ namespace TestGame
                 new Coords(x, y),
                 "Vasya", mCanvas,
                 new ClrRGB(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255)));
+
             GameObjects.Add(Vasya);
+            Vasya.AddToCanv();
         }
 
         public void Move( string d)
-        {           
-
-            foreach (GOSquare obj in GameObjects)
-            {
-                obj.IsIn(RedSquare.crd);
-                obj.IsIn(RedSquare.crd);
-            }
-
+        {
             RedSquare.Movement(d);
         }
         
