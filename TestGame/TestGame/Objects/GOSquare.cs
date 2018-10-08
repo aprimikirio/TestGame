@@ -13,9 +13,7 @@ namespace TestGame.Objects
     class GOSquare : GameObject
     {
         public Rectangle SquareRect = new Rectangle();
-        private Canvas mCanvas;
         private int angle = 0;
-        public Coords LB, RB, RT, LT;
         public int Speed = 1;
 
         public GOSquare(double edge, Coords _crd, string _name, Canvas _mCanvas, ClrRGB _color) : base(edge, edge, _crd, _name)
@@ -23,19 +21,20 @@ namespace TestGame.Objects
             height = edge;
             width = edge;
             crd = _crd;
-            LB = _crd;
             name = _name;
             mCanvas = _mCanvas;
 
-            RB.x = LB.x + width;
-            RB.y = LB.y;
+            Crds.LB.x = crd.x;
+            Crds.LB.y = crd.y;
 
-            RT.x = LB.x + width;
-            RT.y = LB.y + height;
+            Crds.RB.x = Crds.LB.x + width;
+            Crds.RB.y = Crds.LB.y;
 
-            LT.x = LB.x;
-            LT.y = LB.y + height;
+            Crds.RT.x = Crds.LB.x + width;
+            Crds.RT.y = Crds.LB.y + height;
 
+            Crds.LT.x = Crds.LB.x;
+            Crds.LT.y = Crds.LB.y + height;
 
             SquareRect = new Rectangle();
             SquareRect.Name = _name.Replace(" ", string.Empty);
@@ -75,44 +74,6 @@ namespace TestGame.Objects
             SquareRect.RenderTransform = rotateTransformSquare;
 
             angle += 5;
-        }
-        public bool IsIn(GOSquare a)
-        {
-            return (this.RT.x >= a.LB.x && this.LB.x <= a.RT.x)
-                && (this.RT.y >= a.LB.y && this.LB.y <= a.RT.y);
-        }
-
-        public void Moving(string direction)
-        {
-            if (direction == "Left")
-            {
-                this.crd.x -= Speed;
-                this.LB.x -= Speed;
-                this.LT.x -= Speed;
-                this.RT.x -= Speed;
-                this.RB.x -= Speed;
-            }
-            else if (direction == "Right")
-            {
-                this.crd.x += Speed;
-                this.LB.x += Speed;
-                this.LT.x += Speed;
-                this.RT.x += Speed;
-                this.RB.x += Speed;
-            }
-        }
-
-        public GOSquare Moved(string direction)
-        {
-            GOSquare MovedSquare = new GOSquare(this.height, this.crd, this.name + "moved", this.mCanvas, new ClrRGB(255, 0, 0));
-            MovedSquare.Moving(direction);
-            return MovedSquare;
-        }
-
-        public override void Move(string direction)
-        {
-            Moving(direction);
-            Refresh();
         }
 
         public double Height

@@ -36,11 +36,11 @@ namespace TestGame
         {
             if (e.Key.ToString() == "Left")
             {
-                InitGame.Move("Left");
+                InitGame.Move(Drctn.Left);
             }
             else if (e.Key.ToString() == "Right")
             {
-                InitGame.Move("Right");                
+                InitGame.Move(Drctn.Right);                
             }
             else if (e.Key.ToString() == "Up")
             {

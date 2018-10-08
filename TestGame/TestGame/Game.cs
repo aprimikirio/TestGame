@@ -56,7 +56,7 @@ namespace TestGame
 
             foreach (GOSquare gsq in GameObjects)
             {
-                if (!Vasya1.IsIn(gsq) == false)                
+                if (!Vasya1.Intersect(gsq.Crds) == false)                
                 {
                     isin = false;
                 }
@@ -66,48 +66,62 @@ namespace TestGame
             {
                 GameObjects.Add(Vasya1);
                 Vasya1.AddToCanv();
-                mTextBox.Text = " OUT \n";
+                mTextBox.Text += " OUT \n";
             }
             else
             {
-                mTextBox.Text = " IN \n";
+                mTextBox.Text += " IN \n";
                 isin = false;
             }
 
             return !isin;
         }
 
-        public bool IsIn(GOSquare a, GOSquare b)
+        public void Move(Drctn d)
         {
-            return (b.RT.x >= a.LB.x && b.LB.x <= a.RT.x) 
-                && (b.RT.y >= a.LB.y && b.LB.y <= a.RT.y);
-        }
-
-        public void Move( string d)
-        {
-            //RedSquare.Move(d);
-
             bool isin = true;
+
+            mTextBox.Text = RedSquare.crd.x.ToString();
+            mTextBox.Text += RedSquare.crd.y.ToString();
+            mTextBox.Text += "\n";
+
+            mTextBox.Text += RedSquare.Crds.LB.x.ToString();
+            mTextBox.Text += RedSquare.Crds.LB.y.ToString();
+            mTextBox.Text += "\n";
+
+            if (isin)
+                mTextBox.Text += "+\n";
+            else
+                mTextBox.Text += "-\n";
 
             foreach (GOSquare gsq in GameObjects)
             {
                 if (gsq != RedSquare)
-                if (!RedSquare.Moved(d).IsIn(gsq) == false)
+                { 
+                if (gsq.Intersect(RedSquare.GetMoved(d, 10)))
                 {
-                    isin = false;
+                        isin = false;
+                }
                 }
             }
 
             if (isin)
+                mTextBox.Text += "+\n";
+            else
+                mTextBox.Text += "-\n";
+
+            if (isin)
             {
-                RedSquare.Move(d);
-                mTextBox.Text = "Move \n";
+                RedSquare.Move(d, 1);
+                mTextBox.Text += "Move \n";
             }
             else
             {
-                mTextBox.Text = " Can`t \n";
+                mTextBox.Text += " Can`t \n";
                 isin = false;
             }
+
+
         }
         
     }

@@ -57,6 +57,7 @@
     <Compile Include="Game.cs" />
     <Compile Include="Objects\GOSquare.cs" />
     <Compile Include="Structures\ClrRGB.cs" />
+    <Compile Include="Structures\RectangleCrds.cs" />
     <Compile Include="Structures\Coords.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
