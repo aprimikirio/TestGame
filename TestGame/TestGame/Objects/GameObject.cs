@@ -9,7 +9,6 @@ namespace TestGame.Objects
     {
         public double height;
         public double width;
-        public Coords crd;
         public string name;
         public Canvas mCanvas;
         public RectangleCrds Crds;
@@ -17,9 +16,11 @@ namespace TestGame.Objects
         public GameObject(double _height, double _width, Coords _crd, string _name)
         {
             height = _height;
-            width = _width;            
-            crd = _crd;
+            width = _width;    
             name = _name;
+
+            Crds.LB.x = _crd.x;
+            Crds.LB.y = _crd.y;
 
             Crds.RB.x = Crds.LB.x + width;
             Crds.RB.y = Crds.LB.y;
@@ -66,17 +67,29 @@ namespace TestGame.Objects
             switch (direction)
             {
                 case Drctn.Up:
-                    ChngVrtCrd(delta, movedCrds);
-                break;
+                    movedCrds.LB.y += delta;
+                    movedCrds.LT.y += delta;
+                    movedCrds.RT.y += delta;
+                    movedCrds.RB.y += delta;
+                    break;
                 case Drctn.Right:
-                    ChngHrzCrd(delta, movedCrds);
-                break;
+                    movedCrds.LB.x += delta;
+                    movedCrds.LT.x += delta;
+                    movedCrds.RT.x += delta;
+                    movedCrds.RB.x += delta;
+                    break;
                 case Drctn.Down:
-                    ChngVrtCrd(-delta, movedCrds);
-                break;
+                    movedCrds.LB.y -= delta;
+                    movedCrds.LT.y -= delta;
+                    movedCrds.RT.y -= delta;
+                    movedCrds.RB.y -= delta;
+                    break;
                 case Drctn.Left:
-                    ChngHrzCrd(-delta, movedCrds);
-                break;
+                    movedCrds.LB.x -= delta;
+                    movedCrds.LT.x -= delta;
+                    movedCrds.RT.x -= delta;
+                    movedCrds.RB.x -= delta;
+                    break;
             }
 
             return movedCrds;
@@ -84,35 +97,17 @@ namespace TestGame.Objects
 
         public void ChngHrzCrd(double delta)
         {
-            crd.x += delta;
             Crds.LB.x += delta;
             Crds.LT.x += delta;
             Crds.RT.x += delta;
             Crds.RB.x += delta;
         }
-        public void ChngHrzCrd(double delta, RectangleCrds InputRCrds)
-        {
-            //crd.x += delta;
-            InputRCrds.LB.x += delta;
-            InputRCrds.LT.x += delta;
-            InputRCrds.RT.x += delta;
-            InputRCrds.RB.x += delta;
-        }
         public void ChngVrtCrd(double delta)
         {
-            crd.y += delta;
             Crds.LB.y += delta;
             Crds.LT.y += delta;
             Crds.RT.y += delta;
             Crds.RB.y += delta;
-        }
-        public void ChngVrtCrd(double delta, RectangleCrds InputRCrds)
-        {
-            //crd.y += delta;
-            InputRCrds.LB.y += delta;
-            InputRCrds.LT.y += delta;
-            InputRCrds.RT.y += delta;
-            InputRCrds.RB.y += delta;
         }
         virtual public void Refresh() { }
 

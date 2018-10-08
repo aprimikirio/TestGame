@@ -81,12 +81,12 @@ namespace TestGame
         {
             bool isin = true;
 
-            mTextBox.Text = RedSquare.crd.x.ToString();
-            mTextBox.Text += RedSquare.crd.y.ToString();
+            mTextBox.Text = RedSquare.Crds.LB.x.ToString();
+            mTextBox.Text += RedSquare.Crds.LB.y.ToString();
             mTextBox.Text += "\n";
 
-            mTextBox.Text += RedSquare.Crds.LB.x.ToString();
-            mTextBox.Text += RedSquare.Crds.LB.y.ToString();
+            mTextBox.Text += RedSquare.GetMoved(d, 1).LB.x.ToString();
+            mTextBox.Text += RedSquare.GetMoved(d, 1).LB.y.ToString();
             mTextBox.Text += "\n";
 
             if (isin)
@@ -98,10 +98,10 @@ namespace TestGame
             {
                 if (gsq != RedSquare)
                 { 
-                if (gsq.Intersect(RedSquare.GetMoved(d, 10)))
-                {
+                    if (gsq.Intersect(RedSquare.GetMoved(d, 1)))
+                    {
                         isin = false;
-                }
+                    }
                 }
             }
 

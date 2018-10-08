@@ -20,12 +20,11 @@ namespace TestGame.Objects
         {
             height = edge;
             width = edge;
-            crd = _crd;
             name = _name;
             mCanvas = _mCanvas;
 
-            Crds.LB.x = crd.x;
-            Crds.LB.y = crd.y;
+            Crds.LB.x = _crd.x;
+            Crds.LB.y = _crd.y;
 
             Crds.RB.x = Crds.LB.x + width;
             Crds.RB.y = Crds.LB.y;
@@ -51,8 +50,8 @@ namespace TestGame.Objects
 
         public override void Refresh()
         {
-            Canvas.SetLeft(this.SquareRect, this.crd.x);
-            Canvas.SetBottom(this.SquareRect, this.crd.y);
+            Canvas.SetLeft(this.SquareRect, this.Crds.LB.x);
+            Canvas.SetBottom(this.SquareRect, this.Crds.LB.y);
         }
 
         public void Rotate()
@@ -62,7 +61,7 @@ namespace TestGame.Objects
             if (angle > 90)
             {
                 rotateTransformSquare = new RotateTransform(angle - 90);
-                crd.x = crd.x + height; angle = 0; Refresh();
+                Crds.LB.x = Crds.LB.x + height; angle = 0; Refresh();
             }
             else
             {
