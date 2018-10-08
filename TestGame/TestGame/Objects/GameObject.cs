@@ -24,7 +24,7 @@ namespace TestGame.Objects
 
         virtual public void Refresh() { }
 
-        public void Movement(string direction)
+        virtual public void Move(string direction)
         {
             if (direction == "Left")
                 crd.x -= 1;

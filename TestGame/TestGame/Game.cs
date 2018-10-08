@@ -18,7 +18,6 @@ namespace TestGame
         private Random rand;
         private GOSquare RedSquare;
         private TextBlock mTextBox;
-        private GOSquare Vasya;
 
         public Game(Canvas _mCanvas, TextBlock _mTextBox)
         {
@@ -26,51 +25,89 @@ namespace TestGame
             GameObjects = new List<GOSquare>();
             rand = new Random();
             mTextBox = _mTextBox;
+
             RedSquare = new GOSquare( 100,
                 new Coords(100, 100),
                 "RedSquare", mCanvas,
                 new ClrRGB(255, 0, 0));
 
-            Vasya = new GOSquare(250,
-                new Coords(50, 50),
-                "Vasya", mCanvas,
-                new ClrRGB(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255)));
-
-            GameObjects.Add(Vasya);
-            Vasya.AddToCanv();
+            RedSquare.AddToCanv();
+            GameObjects.Add(RedSquare);
         }
         
         public void AddObject()
         {
-            this.AddObject(rand.Next(0, 400), rand.Next(0, 480), rand.Next(10, 100));
+           bool kek = true;
+
+           while(kek == true)
+           {
+                kek = this.AddObject(rand.Next(0, 400), rand.Next(0, 400), rand.Next(50, 85));
+           }
         }
 
-        public void AddObject(double x, double y, double edg)
+        public bool AddObject(double x, double y, double edg)
         {
             GOSquare Vasya1 = new GOSquare(edg,
                 new Coords(x, y),
                 "Vasya", mCanvas,
                 new ClrRGB(rand.Next(0, 255), rand.Next(0, 255), rand.Next(0, 255)));
 
-            if (IsIn(Vasya1, Vasya) == false)
-            {
-                mTextBox.Text = " OUT \n";                
-            }
-            else mTextBox.Text = " IN \n";
+            bool isin = true;
 
-            GameObjects.Add(Vasya1);
-            Vasya1.AddToCanv();
+            foreach (GOSquare gsq in GameObjects)
+            {
+                if (!Vasya1.IsIn(gsq) == false)                
+                {
+                    isin = false;
+                }
+            }
+
+            if (isin)
+            {
+                GameObjects.Add(Vasya1);
+                Vasya1.AddToCanv();
+                mTextBox.Text = " OUT \n";
+            }
+            else
+            {
+                mTextBox.Text = " IN \n";
+                isin = false;
+            }
+
+            return !isin;
         }
 
         public bool IsIn(GOSquare a, GOSquare b)
         {
-            //return (a.RB.x < b.LB.x || b.RB.x < a.LB.x || a.RB.y < b.LB.y || b.RB.y < a.LB.y);
-            return (b.RT.x >= a.LB.x && b.LB.x <= a.RT.x) && (b.RT.y >= a.LB.y && b.LB.y <= a.RT.y);
+            return (b.RT.x >= a.LB.x && b.LB.x <= a.RT.x) 
+                && (b.RT.y >= a.LB.y && b.LB.y <= a.RT.y);
         }
 
         public void Move( string d)
         {
-            RedSquare.Movement(d);
+            //RedSquare.Move(d);
+
+            bool isin = true;
+
+            foreach (GOSquare gsq in GameObjects)
+            {
+                if (gsq != RedSquare)
+                if (!RedSquare.Moved(d).IsIn(gsq) == false)
+                {
+                    isin = false;
+                }
+            }
+
+            if (isin)
+            {
+                RedSquare.Move(d);
+                mTextBox.Text = "Move \n";
+            }
+            else
+            {
+                mTextBox.Text = " Can`t \n";
+                isin = false;
+            }
         }
         
     }

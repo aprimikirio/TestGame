@@ -16,6 +16,7 @@ namespace TestGame.Objects
         private Canvas mCanvas;
         private int angle = 0;
         public Coords LB, RB, RT, LT;
+        public int Speed = 1;
 
         public GOSquare(double edge, Coords _crd, string _name, Canvas _mCanvas, ClrRGB _color) : base(edge, edge, _crd, _name)
         {
@@ -54,6 +55,7 @@ namespace TestGame.Objects
             Canvas.SetLeft(this.SquareRect, this.crd.x);
             Canvas.SetBottom(this.SquareRect, this.crd.y);
         }
+
         public void Rotate()
         {
             RotateTransform rotateTransformSquare;
@@ -74,13 +76,50 @@ namespace TestGame.Objects
 
             angle += 5;
         }
+        public bool IsIn(GOSquare a)
+        {
+            return (this.RT.x >= a.LB.x && this.LB.x <= a.RT.x)
+                && (this.RT.y >= a.LB.y && this.LB.y <= a.RT.y);
+        }
+
+        public void Moving(string direction)
+        {
+            if (direction == "Left")
+            {
+                this.crd.x -= Speed;
+                this.LB.x -= Speed;
+                this.LT.x -= Speed;
+                this.RT.x -= Speed;
+                this.RB.x -= Speed;
+            }
+            else if (direction == "Right")
+            {
+                this.crd.x += Speed;
+                this.LB.x += Speed;
+                this.LT.x += Speed;
+                this.RT.x += Speed;
+                this.RB.x += Speed;
+            }
+        }
+
+        public GOSquare Moved(string direction)
+        {
+            GOSquare MovedSquare = new GOSquare(this.height, this.crd, this.name + "moved", this.mCanvas, new ClrRGB(255, 0, 0));
+            MovedSquare.Moving(direction);
+            return MovedSquare;
+        }
+
+        public override void Move(string direction)
+        {
+            Moving(direction);
+            Refresh();
+        }
 
         public double Height
         {
             get { return height; }
             set { this.height = value; this.width = value; }
         }
-
         public double Width
         {
             get { return width; }
