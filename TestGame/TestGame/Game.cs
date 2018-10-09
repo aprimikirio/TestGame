@@ -31,6 +31,8 @@ namespace TestGame
                 "RedSquare", mCanvas,
                 new ClrRGB(255, 0, 0));
 
+            RedSquare.Speed = 1;
+
             RedSquare.AddToCanv();
             GameObjects.Add(RedSquare);
         }
@@ -38,10 +40,13 @@ namespace TestGame
         public void AddObject()
         {
            bool kek = true;
+            int minEdge = 50;
+            int maxEdge = 80;
 
            while(kek == true)
            {
-                kek = this.AddObject(rand.Next(0, 400), rand.Next(0, 400), rand.Next(50, 85));
+                kek = this.AddObject(rand.Next(0, Convert.ToInt32(mCanvas.Width) - maxEdge), 
+                    rand.Next(0, Convert.ToInt32(mCanvas.Height) - maxEdge), rand.Next(minEdge, maxEdge));
            }
         }
 
@@ -112,7 +117,7 @@ namespace TestGame
 
             if (isin)
             {
-                RedSquare.Move(d, 1);
+                RedSquare.Move(d, RedSquare.Speed);
                 mTextBox.Text += "Move \n";
             }
             else

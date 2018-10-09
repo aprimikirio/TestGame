@@ -5,14 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestGame"
         mc:Ignorable="d"
-        Title="MainWindow" Height="480" Width="640" ResizeMode="NoResize"
+        Title="MainWindow" Height="545.085" Width="692.882" ResizeMode="NoResize"
         KeyDown="MainCanvas_KeyDown">
 
     <Grid>
         <Grid>
-            <Canvas Name="MainCanvas" Background="Lavender">
-                <TextBlock Name="txtbx" TextAlignment="Right" Height="451" Canvas.Left="482" TextWrapping="Wrap" Width="142" Background="{x:Null}"/>
-            </Canvas>
+            <Canvas Name="MainCanvas" Background="Lavender" Width="640" Height="480"/>
+            <TextBlock Name="txtbx" TextAlignment="Right" Canvas.Left="482" TextWrapping="Wrap" Background="{x:Null}" Margin="552,18,23,424"/>
         </Grid>
     </Grid>
 </Window>

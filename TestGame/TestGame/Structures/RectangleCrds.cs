@@ -6,6 +6,15 @@ using System.Threading.Tasks;
 
 namespace TestGame.Structures
 {
+
+    enum Drctn
+    {
+        Up,
+        Right,
+        Down,
+        Left
+    }
+
     struct RectangleCrds
     {
         public Coords LB, RB, RT, LT;

@@ -6,14 +6,6 @@ using System.Threading.Tasks;
 
 namespace TestGame.Structures
 {
-    enum Drctn
-    {
-        Up,
-        Right,
-        Down,
-        Left
-    }
-
     struct Coords
     {
         public double x;
