@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TestGame.Structures;
 using TestGame.Objects;
@@ -20,13 +21,12 @@ namespace TestGame
         private GOSquare RedSquare;
         private TextBlock mTextBox;
 
-        public Game(Canvas _mCanvas, TextBlock _mTextBox)
+        public Game(Canvas mainCanvas, TextBlock debugInfoTextBox)
         {
-            mCanvas = _mCanvas;
+            mCanvas = mainCanvas;
             GameObjects = new List<GameObject>();
             rand = new Random();
-            mTextBox = _mTextBox;
-
+            mTextBox = debugInfoTextBox;
 
             Road = new GORectangle(50,mCanvas.Width,
                 new Coords(0, 0),
@@ -36,12 +36,10 @@ namespace TestGame
             Road.AddToCanv();
             GameObjects.Add(Road);
 
-
             RedSquare = new GOSquare( 100,
                 new Coords(100, 100),
                 "RedSquare", mCanvas,
                 new ClrRGB(255, 0, 0));
-            
 
             RedSquare.Speed = 1;
 
@@ -52,10 +50,10 @@ namespace TestGame
         public void AddObject()
         {
            bool kek = true;
-            int minEdge = 50;
-            int maxEdge = 80;
+           int minEdge = 50;
+           int maxEdge = 80;
 
-           while(kek == true)
+            while (kek == true)
            {
                 kek = this.AddObject(rand.Next(0, Convert.ToInt32(mCanvas.Width) - maxEdge), 
                     rand.Next(0, Convert.ToInt32(mCanvas.Height) - maxEdge), rand.Next(minEdge, maxEdge));
@@ -83,11 +81,9 @@ namespace TestGame
             {
                 GameObjects.Add(Vasya1);
                 Vasya1.AddToCanv();
-                mTextBox.Text += " OUT \n";
             }
             else
             {
-                mTextBox.Text += " IN \n";
                 isin = false;
             }
 
@@ -98,18 +94,13 @@ namespace TestGame
         {
             bool isin = true;
 
-            mTextBox.Text = RedSquare.Crds.LB.x.ToString();
+            mTextBox.Text = RedSquare.Crds.LB.x.ToString() + " ";
             mTextBox.Text += RedSquare.Crds.LB.y.ToString();
             mTextBox.Text += "\n";
 
-            mTextBox.Text += RedSquare.GetMoved(d, 1).LB.x.ToString();
+            mTextBox.Text += RedSquare.GetMoved(d, 1).LB.x.ToString() + " ";
             mTextBox.Text += RedSquare.GetMoved(d, 1).LB.y.ToString();
             mTextBox.Text += "\n";
-
-            if (isin)
-                mTextBox.Text += "+\n";
-            else
-                mTextBox.Text += "-\n";
 
             foreach (GameObject gsq in GameObjects)
             {
@@ -121,11 +112,6 @@ namespace TestGame
                     }
                 }
             }
-
-            if (isin)
-                mTextBox.Text += "+\n";
-            else
-                mTextBox.Text += "-\n";
 
             if (isin)
             {

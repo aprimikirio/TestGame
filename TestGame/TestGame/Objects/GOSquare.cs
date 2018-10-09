@@ -1,30 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TestGame.Structures;
+﻿using TestGame.Structures;
 using System.Windows.Shapes;
 using System.Windows.Media;
 using System.Windows.Controls;
 
 namespace TestGame.Objects
 {
-    class GOSquare : GameObject
+    class GOSquare : GORectangle
     {
-        public Rectangle SquareRect = new Rectangle();
         private int angle = 0;
         public int Speed = 1;
 
-        public GOSquare(double edge, Coords _crd, string _name, Canvas _mCanvas, ClrRGB _color) : base(edge, edge, _crd, _name)
+        public GOSquare(double edge, Coords сoordinatеs, string name, Canvas mainCanvas, ClrRGB color) 
+            : base(edge, edge, сoordinatеs, name, mainCanvas, color)
         {
             height = edge;
             width = edge;
-            name = _name;
-            mCanvas = _mCanvas;
+            this.name = name;
+            mCanvas = mainCanvas;
 
-            Crds.LB.x = _crd.x;
-            Crds.LB.y = _crd.y;
+            Crds.LB.x = сoordinatеs.x;
+            Crds.LB.y = сoordinatеs.y;
 
             Crds.RB.x = Crds.LB.x + width;
             Crds.RB.y = Crds.LB.y;
@@ -35,25 +30,12 @@ namespace TestGame.Objects
             Crds.LT.x = Crds.LB.x;
             Crds.LT.y = Crds.LB.y + height;
 
-            SquareRect = new Rectangle();
-            SquareRect.Name = _name.Replace(" ", string.Empty);
-            SquareRect.Height = edge;
-            SquareRect.Width = edge;
-            SquareRect.Fill = _color.color;
+            mRectangle = new Rectangle();
+            mRectangle.Name = this.name.Replace(" ", string.Empty);
+            mRectangle.Height = edge;
+            mRectangle.Width = edge;
+            mRectangle.Fill = color.color;
         }
-
-        public void AddToCanv()
-        {
-            mCanvas.Children.Add(SquareRect);
-            Refresh();
-        }
-
-        public override void Refresh()
-        {
-            Canvas.SetLeft(this.SquareRect, this.Crds.LB.x);
-            Canvas.SetBottom(this.SquareRect, this.Crds.LB.y);
-        }
-
 
         public void Rotate()
         {
@@ -71,21 +53,9 @@ namespace TestGame.Objects
 
             rotateTransformSquare.CenterX = height;
             rotateTransformSquare.CenterY = width;
-            SquareRect.RenderTransform = rotateTransformSquare;
+            mRectangle.RenderTransform = rotateTransformSquare;
 
             angle += 5;
         }
-
-        public double Height
-        {
-            get { return height; }
-            set { this.height = value; this.width = value; }
-        }
-        public double Width
-        {
-            get { return width; }
-            set { this.height = value; this.width = value; }
-        }
-
     }
 }

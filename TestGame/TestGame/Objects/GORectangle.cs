@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TestGame.Structures;
+﻿using TestGame.Structures;
 using System.Windows.Shapes;
-using System.Windows.Media;
 using System.Windows.Controls;
 
 namespace TestGame.Objects
@@ -14,15 +8,16 @@ namespace TestGame.Objects
     {
         public Rectangle mRectangle = new Rectangle();
 
-        public GORectangle(double edgeH, double edgeW, Coords _crd, string _name, Canvas _mCanvas, ClrRGB _color) : base(edgeH, edgeW, _crd, _name)
+        public GORectangle(double height, double width, Coords сoordinatеs, string name, Canvas mainCanvas, ClrRGB color) 
+            : base(height, width, сoordinatеs, name)
         {
-            height = edgeH;
-            width = edgeW;
-            name = _name;
-            mCanvas = _mCanvas;
+            this.height = height;
+            this.width = width;
+            this.name = name;
+            mCanvas = mainCanvas;
 
-            Crds.LB.x = _crd.x;
-            Crds.LB.y = _crd.y;
+            Crds.LB.x = сoordinatеs.x;
+            Crds.LB.y = сoordinatеs.y;
 
             Crds.RB.x = Crds.LB.x + width;
             Crds.RB.y = Crds.LB.y;
@@ -34,10 +29,10 @@ namespace TestGame.Objects
             Crds.LT.y = Crds.LB.y + height;
 
             mRectangle = new Rectangle();
-            mRectangle.Name = _name.Replace(" ", string.Empty);
+            mRectangle.Name = this.name.Replace(" ", string.Empty);
             mRectangle.Height = height;
             mRectangle.Width = width;
-            mRectangle.Fill = _color.color;
+            mRectangle.Fill = color.color;
         }
 
         public void AddToCanv()

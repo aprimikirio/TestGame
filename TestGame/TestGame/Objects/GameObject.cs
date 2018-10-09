@@ -1,6 +1,4 @@
 ﻿using TestGame.Structures;
-using System.Windows.Shapes;
-using System.Windows.Media;
 using System.Windows.Controls;
 
 namespace TestGame.Objects
@@ -14,14 +12,14 @@ namespace TestGame.Objects
         public RectangleCrds Crds;
 
 
-        public GameObject(double _height, double _width, Coords _crd, string _name)
+        public GameObject(double height, double width, Coords сoordinatеs, string name)
         {
-            height = _height;
-            width = _width;    
-            name = _name;
+            this.height = height;
+            this.width = width;
+            this.name = name;
 
-            Crds.LB.x = _crd.x;
-            Crds.LB.y = _crd.y;
+            Crds.LB.x = сoordinatеs.x;
+            Crds.LB.y = сoordinatеs.y;
 
             Crds.RB.x = Crds.LB.x + width;
             Crds.RB.y = Crds.LB.y;
