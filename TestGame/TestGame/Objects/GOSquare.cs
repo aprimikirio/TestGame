@@ -54,6 +54,7 @@ namespace TestGame.Objects
             Canvas.SetBottom(this.SquareRect, this.Crds.LB.y);
         }
 
+
         public void Rotate()
         {
             RotateTransform rotateTransformSquare;

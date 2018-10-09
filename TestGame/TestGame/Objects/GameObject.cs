@@ -13,6 +13,7 @@ namespace TestGame.Objects
         public Canvas mCanvas;
         public RectangleCrds Crds;
 
+
         public GameObject(double _height, double _width, Coords _crd, string _name)
         {
             height = _height;

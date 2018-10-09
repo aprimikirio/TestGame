@@ -14,22 +14,34 @@ namespace TestGame
     class Game
     {
         private Canvas mCanvas;
-        private List<GOSquare> GameObjects;
+        private List<GameObject> GameObjects;
         private Random rand;
+        private GORectangle Road;
         private GOSquare RedSquare;
         private TextBlock mTextBox;
 
         public Game(Canvas _mCanvas, TextBlock _mTextBox)
         {
             mCanvas = _mCanvas;
-            GameObjects = new List<GOSquare>();
+            GameObjects = new List<GameObject>();
             rand = new Random();
             mTextBox = _mTextBox;
+
+
+            Road = new GORectangle(50,mCanvas.Width,
+                new Coords(0, 0),
+                "DOROGA", mCanvas,
+                new ClrRGB(10, 10, 10));
+
+            Road.AddToCanv();
+            GameObjects.Add(Road);
+
 
             RedSquare = new GOSquare( 100,
                 new Coords(100, 100),
                 "RedSquare", mCanvas,
                 new ClrRGB(255, 0, 0));
+            
 
             RedSquare.Speed = 1;
 
@@ -59,7 +71,7 @@ namespace TestGame
 
             bool isin = true;
 
-            foreach (GOSquare gsq in GameObjects)
+            foreach (GameObject gsq in GameObjects)
             {
                 if (!Vasya1.Intersect(gsq.Crds) == false)                
                 {
@@ -99,7 +111,7 @@ namespace TestGame
             else
                 mTextBox.Text += "-\n";
 
-            foreach (GOSquare gsq in GameObjects)
+            foreach (GameObject gsq in GameObjects)
             {
                 if (gsq != RedSquare)
                 { 
